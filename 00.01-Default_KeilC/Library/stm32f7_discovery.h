@@ -6,17 +6,34 @@
 
 #include "stm32f7xx_hal.h"
 
-//#define LED_GREEN
-#define LED_PORT        GPIOI
-#define LED_PIN         GPIO_PIN_1
-     
+typedef enum 
+{
+    LED1 = 0,
+    LED3 = 1,
+    LED6 = 2,
+    ALL = 3
+} Led_TypeDef;
+
+#define LED1_PIN                         GPIO_PIN_1
+#define LED1_PORT                   GPIOI
+#define LED1_CLK_ENABLE()           __GPIOI_CLK_ENABLE()
+
+#define LED3_PIN                         GPIO_PIN_3
+#define LED3_PORT                   GPIOE
+#define LED3_CLK_ENABLE()           __GPIOE_CLK_ENABLE() 
+   
+
+#define LED6_PIN                         GPIO_PIN_4
+#define LED6_PORT                   GPIOD
+#define LED6_CLK_ENABLE()           __GPIOD_CLK_ENABLE()
+
 #define BUTTON_PORT     GPIOI
 #define BUTTON_PIN      GPIO_PIN_11
 
-void LED_Init(void);
-void LED_Off(void);
-void LED_On(void);
-void LED_Toggle(void);
+void LED_Init(Led_TypeDef Led);
+void LED_Off(Led_TypeDef Led);
+void LED_On(Led_TypeDef Led);
+void LED_Toggle(Led_TypeDef Led);
 
 void BUTTON_Init(void);
          

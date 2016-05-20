@@ -2,13 +2,13 @@
 
 int main(void)
 {
-    uint32_t time;
     System_Init();
-    LED_Init();
+    LED_Init(ALL);
     Delay_Init();
+    
     while(1)
     {
-        LED_Toggle();
+        LED_Toggle(ALL);
         delay_ms(500);
     }
 }
